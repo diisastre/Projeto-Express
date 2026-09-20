@@ -13,6 +13,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/tarefas', (req, res) => {
+
+    if (req.query.concluida === 'true') {
+        const tarefasConcluidas = tarefas.filter(tarefa => tarefa.concluida === true);
+
+        return res.json(tarefasConcluidas);
+    }
     res.json(tarefas);
 });
 
@@ -25,7 +31,6 @@ app.get('/tarefas/:id', (req, res) => {
     if (!tarefa) {
         return res.status(404).json({ erro: 'Tarefa não encontrada' });
     }
-
     res.json(tarefa);
 });
 
