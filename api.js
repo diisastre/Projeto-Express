@@ -1,6 +1,8 @@
 import express from 'express';
 
 const app = express();
+app.use(express.json());
+
 
 let tarefas = [
     { id: 1, titulo: 'Escutar música', concluida: false },
@@ -32,6 +34,19 @@ app.get('/tarefas/:id', (req, res) => {
         return res.status(404).json({ erro: 'Tarefa não encontrada' });
     }
     res.json(tarefa);
+});
+
+app.post('/tarefas', (req, res) => {
+
+    const novaTarefa = {
+        id: tarefas.length + 1,
+        titulo: req.body.titulo,
+        concluida: false
+    };
+
+    tarefas.push(novaTarefa);
+
+    res.status(201).json(novaTarefa);
 });
 
 app.listen(3000, () => {

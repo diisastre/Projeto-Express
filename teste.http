@@ -1,0 +1,6 @@
+POST https://zany-halibut-5vr47pgrrqgg37497-3000.app.github.dev/tarefas
+Content-Type: application/json
+
+{
+    "titulo": "Cozinhar"
+}
