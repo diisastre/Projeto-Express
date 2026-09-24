@@ -1,6 +1,24 @@
+### Ex1
+GET https://zany-halibut-5vr47pgrrqgg37497-3000.app.github.dev/
+
+### Ex2
+GET https://zany-halibut-5vr47pgrrqgg37497-3000.app.github.dev/tarefas
+
+### Ex 3 
+GET https://zany-halibut-5vr47pgrrqgg37497-3000.app.github.dev/tarefas/1
+
+### Ex 3 - Teste de tarefa não existente
+GET https://zany-halibut-5vr47pgrrqgg37497-3000.app.github.dev/tarefas/10
+
+### Ex 4
+GET https://zany-halibut-5vr47pgrrqgg37497-3000.app.github.dev/tarefas?concluida=true
+
+### Ex 5
 POST https://zany-halibut-5vr47pgrrqgg37497-3000.app.github.dev/tarefas
 Content-Type: application/json
 
 {
     "titulo": "Cozinhar"
 }
+
+
