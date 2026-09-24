@@ -36,18 +36,45 @@ app.get('/tarefas/:id', (req, res) => {
     res.json(tarefa);
 });
 
-app.post('/tarefas', (req, res) => {
+function autenticar(req, res, next) {
 
+    const token = req.headers.authorization;
+
+    if (!token) {
+        return res.status(401).json({
+            erro: 'Não autorizado'
+        });
+    }
+    next();
+}
+
+function validarTarefa(req, res, next) {
+
+    if (!req.body.titulo) {
+        return res.status(400).json({
+            erro: 'O título é obrigatório'
+        });
+    }
+    next();
+}
+
+function registrarLog(req, res, next) {
+    console.log('Nova tarefa sendo criada:', req.body.titulo);
+    next();
+}
+
+app.post('/tarefas',[autenticar, validarTarefa, registrarLog],(req, res) => {
     const novaTarefa = {
         id: tarefas.length + 1,
         titulo: req.body.titulo,
-        concluida: false
-    };
+        concluida: false};
 
-    tarefas.push(novaTarefa);
+        tarefas.push(novaTarefa);
 
-    res.status(201).json(novaTarefa);
-});
+        res.status(201).json(novaTarefa);
+    }
+);
+
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');

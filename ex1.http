@@ -1,0 +1,7 @@
+POST https://zany-halibut-5vr47pgrrqgg37497-3000.app.github.dev/tarefas
+Authorization: Bearer 123
+Content-Type: application/json
+
+{
+    "titulo": "Assistir filme"
+}
